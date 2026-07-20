@@ -16,7 +16,7 @@ The collection is organized around a systems question:
 
 The original training datasets and model checkpoints are not bundled, so this
 repository does **not** claim a new FID score or a current end-to-end
-reproduction. Instead, a deterministic CPU benchmark audits properties that
+reproduction. Instead, a deterministic benchmark audits properties that
 can be measured from the versioned outputs.
 
 - **Conditional consistency:** conditional WGAN-GP grids reached
@@ -50,8 +50,6 @@ differ—DCGAN epochs 0–9, WGAN 90–99, WGAN-GP 21–32, and conditional WGAN
 
 ## Reproduce the artifact audit
 
-The validated audit is CPU-only and requires no downloads, GPU, checkpoint, or
-external API.
 
 ```bash
 python -m venv .venv
