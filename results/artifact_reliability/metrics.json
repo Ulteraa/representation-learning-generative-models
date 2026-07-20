@@ -1,0 +1,120 @@
+{
+  "schema_version": 1,
+  "generated_at_utc": "2026-07-19T23:53:16.957641+00:00",
+  "git_sha": "17d15cf1e39752ef41cec5dd40e202dfa507e586",
+  "command": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python experiments/artifact_reliability_benchmark.py",
+  "configuration": {
+    "cluster_seeds": [
+      0,
+      1,
+      2
+    ]
+  },
+  "runtime": {
+    "python": "3.12.13",
+    "platform": "Linux-6.12.47-x86_64-with-glibc2.39",
+    "numpy": "2.3.5",
+    "scipy": "1.17.0",
+    "scikit_learn": "1.8.0",
+    "matplotlib": "3.10.8"
+  },
+  "digit_artifacts": {
+    "DCGAN": {
+      "archived_checkpoints": 10,
+      "samples_per_checkpoint": 40,
+      "effective_modes_mean": 6.061386863373965,
+      "effective_modes_std": 1.7360039726828485,
+      "nearest_neighbor_distance_mean": 7.945752427194706,
+      "nearest_neighbor_distance_std": 1.0983830743424252
+    },
+    "WGAN": {
+      "archived_checkpoints": 10,
+      "samples_per_checkpoint": 40,
+      "effective_modes_mean": 8.560058314726705,
+      "effective_modes_std": 0.354224129399002,
+      "nearest_neighbor_distance_mean": 9.669067350786941,
+      "nearest_neighbor_distance_std": 0.2173415851025285
+    },
+    "WGAN-GP": {
+      "archived_checkpoints": 12,
+      "samples_per_checkpoint": 40,
+      "effective_modes_mean": 7.605972241773833,
+      "effective_modes_std": 0.5176687105912808,
+      "nearest_neighbor_distance_mean": 8.824641938249393,
+      "nearest_neighbor_distance_std": 0.3864812922606527
+    },
+    "Conditional WGAN-GP": {
+      "archived_checkpoints": 10,
+      "samples_per_checkpoint": 40,
+      "effective_modes_mean": 7.406737410713903,
+      "effective_modes_std": 0.730347404037893,
+      "nearest_neighbor_distance_mean": 7.941805012689156,
+      "nearest_neighbor_distance_std": 0.41927607529100946,
+      "leave_one_checkpoint_out_consistency_mean": 0.975,
+      "leave_one_checkpoint_out_consistency_std": 0.0447213595499958,
+      "leave_one_checkpoint_out_consistency_min": 0.85
+    }
+  },
+  "pix2pix_artifacts": {
+    "pairs": 24,
+    "median_edge_recall": 0.9488904338272846,
+    "median_edge_precision": 0.31609793313913165,
+    "median_edge_f1": 0.478481884082976,
+    "median_background_chroma_spill": 0.07963315896163452,
+    "worst_background_chroma_spill": 0.31357210179076345,
+    "worst_spill_sample": "95",
+    "lowest_edge_f1": 0.23787090230915922,
+    "lowest_edge_f1_sample": "187"
+  },
+  "stylegan_control_artifacts": {
+    "Pose": {
+      "trajectories": 20,
+      "frames_per_trajectory": [
+        31
+      ],
+      "median_temporal_roughness": 0.9290398858824914,
+      "median_path_linearity": 0.24500135257877537,
+      "median_consecutive_edge_correlation": 0.9298245500617808,
+      "median_step_coefficient_of_variation": 0.2591623291123323
+    },
+    "Illumination": {
+      "trajectories": 24,
+      "frames_per_trajectory": [
+        21
+      ],
+      "median_temporal_roughness": 0.42407067142965754,
+      "median_path_linearity": 0.6837166569330875,
+      "median_consecutive_edge_correlation": 0.993603792981984,
+      "median_step_coefficient_of_variation": 0.13786628904633624
+    }
+  },
+  "diffusion_artifacts": {
+    "archived_images": 221,
+    "resolution": [
+      64,
+      64
+    ],
+    "exact_duplicate_files": 0,
+    "evaluation_status": "artifact inventory only; no real-data reference or checkpoint is bundled"
+  },
+  "scope": {
+    "current_validation": [
+      "archived MNIST grid coverage and conditional consistency",
+      "archived Pix2Pix structural adherence and background spill",
+      "archived StyleGAN control-trajectory smoothness",
+      "diffusion artifact inventory and exact-duplicate check"
+    ],
+    "historical_only": [
+      "end-to-end training and fidelity for GAN, diffusion, translation, and super-resolution models",
+      "progressive GAN and coupled-GAN training",
+      "CycleGAN quantitative evaluation"
+    ],
+    "limitations": [
+      "Archived checkpoint windows differ across GAN families, so metrics are not an architecture leaderboard.",
+      "Conditional consistency measures separability of requested conditions, not semantic digit correctness.",
+      "Pix2Pix has conditions and generated outputs but no ground-truth targets in the archive.",
+      "Pixel/edge trajectory metrics are proxies and do not establish identity preservation.",
+      "No FID, KID, precision/recall, or task accuracy is claimed without real reference data and checkpoints."
+    ]
+  }
+}
